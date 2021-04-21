@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Consulta";
+}
+<div id="consulta">
+    <center>
+        <h1>Pesquisa de orçamento</h1>
+
+    </center>
+
+    <strong>Consulta</strong>
+
+    <input id="txtFiltro" style="margin-top:2%;">
+    <table id="tabela" class="table" style="margin-top:3%;">
+
+        <tr>
+
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Vendedor</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+
+
+        @Html.Raw(ViewBag.orcamentos)
+    </table>
+
+
+
+</div>
+
+
+@section scripts{
+    <script src="~/js/site.js"></script>
+
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/site.css" />

@@ -1,0 +1,92 @@
+﻿@model OFICINA.Models.Orcamento
+@addTagHelper **, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Editar orçamentos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="card shadow mb-4" style="margin-top:3%">
+
+        <div class="card-body">
+            <div style="padding:10px 10px 10px 10px">
+                <div class="row" style="padding:5px 5px 5px 5px">
+                    <div class="col-md-3">
+                        <strong>Código Orçamento</strong>
+                        <input readonly class="form-control Short" id="codCliente" asp-for="CodCliente">
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Data Orçamento</strong>
+                        <input readonly class="form-control Short" id="dataOrcamento" asp-for="DataOrcamento">
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Descrição Orçamento</strong>
+                        <input class="form-control Short" id="descOrcamento" asp-for="DescricaoOrcamento">
+                    </div>
+                </div>
+                <div class="row" style="padding:5px 5px 5px 5px">
+                    <div class="col-md-4">
+                        <strong>Nome Cliente</strong>
+                        <input class="form-control Short" id="nomeCliente" asp-for="NomeCliente"></input>
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>Valor Orçado</strong>
+                        <input class="form-control Short" id="valorOrcado" asp-for="ValorOrcado">
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Vendedor</strong>
+                        <input class="form-control Short" id="vendedor" asp-for="Vendedor">
+                    </div>
+                </div>
+
+                <div class="row col-md-12" style="padding:5px 5px 5px 5px">
+
+                    <div class="col-md-3">
+                        <button class="btn btn-success" type="submit" id="editar">Salvar</button>
+                        <a class="btn btn-dark" asp-action="Consulta" asp-controller="Home" type="submit">Voltar</a>
+                    </div>
+                    <div class="col-md-9 esconde">
+                        <div class="loader" id="Carrega" style="margin-left:-20%"></div>
+                    </div>
+                </div>
+                <div style="padding:10px 10px 10px 10px">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#editar').on('click', function () {
+
+                var teste = new Object();
+                teste.DataOrcamento = $('#dataOrcamento').val();
+                teste.NomeCliente = $('#nomeCliente').val();
+                teste.Descricao = $('#descOrcamento').val();
+                teste.ValorOrcado = $('#valorOrcado').val();
+                teste.Vendedor = $('#vendedor').val();
+                teste.CodCliente = $('#codCliente').val();
+                alert("Orçamento atualizado com sucesso");
+                $.ajax({
+                    method: "PUT",
+                    url: "/Home/AlterarOrcamento",
+                    data: teste
+                })
+
+                    .done(function () {
+
+                    });
+            });
+        });
+
+
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model OFICINA.Models.Orcamento
+@{
+    ViewData["Title"] = "Cadastro Orçamento";
+}
+
+<div class="text-center">
+    <center>
+        <h1>
+            Cadastro de Serviços
+        </h1>
+    </center>
+</div>
+
+
+<div class="row" style="margin-top:4%" id=" formulario">
+
+
+    <strong>Cliente:</strong>
+    <input class="form-control" id="txtCliente" asp-for="NomeCliente" /> @* asp-for busca as colunas da tabela do banco *@
+
+    <strong>Data:</strong>
+    <input class="form-control" id="txtData" type="datetime-local" asp-for="DataOrcamento" />
+
+    <strong>Vendedor:</strong>
+    <input class="form-control" id="txtVendedor" asp-for="Vendedor" />
+
+    <strong>Descrição:</strong>
+    <input class="form-control" id="txtDescricao" asp-for="DescricaoOrcamento">
+
+    <strong>Valor orçado:</strong>
+    <input class="form-control" id="txtValor" type="number" asp-for="ValorOrcado">
+</div>
+<center>
+    <button class="btn btn-primary" id="btnSalvar" style="margin-top:4%">Cadastrar</button>
+</center>
+
+
+
+@section scripts{
+    <script src="~/js/site.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+}
